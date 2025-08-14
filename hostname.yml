@@ -1,0 +1,17 @@
+---
+- name: Print hostname of managed hosts
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Print the inventory hostnames from the inventory file
+      ansible.builtin.debug:
+        msg: "Inventory Hostname: {{ inventory_hostname }}"
+
+    - name: Print System hostname via Command Execution
+      ansible.builtin.command: hostname
+      register: my_hostname
+
+    - name: Show the hostnames of the managed hosts
+      ansible.bultin.debug:
+        msg: "Hostname: {{ my_hostname.stdout }}"
