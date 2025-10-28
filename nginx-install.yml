@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+    - name: Gather Facts
+	  ansible.builtin.setup:
+	  
+	- name: Install NginX Package on Oracle Server
+	  ansible.builtin.dnf:
+	    name: nginx
+		state: present
+	  when: ansible_os_family == "Oracle"
+	  
+	- name: Start and Enable Nginx Service for Oracle Servers
+	  ansible.builtin.service:
+	    name: nginx
+		state: started
+		enabled: yes
+	  when: ansible_os_family == "Oracle"

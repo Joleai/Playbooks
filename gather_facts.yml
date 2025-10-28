@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Gather Facts for Managed Hosts
+	  ansible.builtin.setup:
+	  
+	- name: Display the facts
+	  ansible.builtin.debug:
+	    var: ansible_facts
