@@ -5,13 +5,13 @@
 
   tasks:
     - name: Print the inventory hostnames from the inventory file
-      ansible.builtin.debug:
+      debug:
         msg: "Inventory Hostname: {{ inventory_hostname }}"
 
     - name: Print System hostname via Command Execution
-      ansible.builtin.command: hostname
+      command: hostname
       register: my_hostname
 
     - name: Show the hostnames of the managed hosts
-      ansible.bultin.debug:
+      debug:
         msg: "Hostname: {{ my_hostname.stdout }}"
